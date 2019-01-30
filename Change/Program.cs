@@ -14,7 +14,7 @@ public static class Test
         {
             int coinCount = cents;
             int newCoin = 1;
-            foreach (var j in (from c in coinValueList
+            foreach (int j in (from c in coinValueList
                                where c <= cents
                                select c).ToList())
             {
