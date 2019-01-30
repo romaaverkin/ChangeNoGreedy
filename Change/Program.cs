@@ -37,7 +37,7 @@ public static class Test
         {
             int thisCoin = coinsUsed[coin];
             Console.WriteLine(thisCoin);
-            coin = coin - thisCoin;
+            coin -= thisCoin;
         }
     }
 
@@ -50,6 +50,11 @@ public static class Test
             10,
             21,
             25
+            //1,
+            //2,
+            //5,
+            //10,
+            //25
         };
 
         List<int> coinsUsed = new List<int>();
@@ -69,9 +74,10 @@ public static class Test
         Console.WriteLine("They are:");
         PrintCoins(coinsUsed, amnt);
         Console.WriteLine("The used list is as follows:");
-        foreach (int x in coinsUsed)
+
+        for (int i = 0; i < coinsUsed.Count; i++)
         {
-            Console.Write($"{x}, ");
+            Console.Write($"{i} - {coinsUsed[i]}, ");
         }
         Console.ReadLine();
     }
