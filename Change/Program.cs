@@ -8,26 +8,26 @@ using System.Collections.Generic;
 public static class Test
 {
 
-    public static int DpMakeChange(List<int> coinValueList, int change, List<int> minCoins, List<int> coinsUsed)
+    public static int DpMakeChange(List<int> clist, int amnt, List<int> coinCount, List<int> coinsUsed)
     {
-        foreach (int cents in Enumerable.Range(0, change + 1))
+        foreach (int cents in Enumerable.Range(0, amnt + 1))
         {
-            int coinCount = cents;
+            int coinQuantity = cents;
             int newCoin = 1;
-            foreach (int j in (from c in coinValueList
+            foreach (int j in (from c in clist
                                where c <= cents
                                select c).ToList())
             {
-                if (minCoins[cents - j] + 1 < coinCount)
+                if (coinCount[cents - j] + 1 < coinQuantity)
                 {
-                    coinCount = minCoins[cents - j] + 1;
+                    coinQuantity = coinCount[cents - j] + 1;
                     newCoin = j;
                 }
             }
-            minCoins[cents] = coinCount;
+            coinCount[cents] = coinQuantity;
             coinsUsed[cents] = newCoin;
         }
-        return minCoins[change];
+        return coinCount[amnt];
     }
 
     public static void PrintCoins(List<int> coinsUsed, int change)
